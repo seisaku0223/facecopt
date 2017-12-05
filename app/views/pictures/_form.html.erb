@@ -1,0 +1,27 @@
+<%= form_for(@picture) do |f| %>
+
+  <% if @picture.errors.any? %>
+    <div id="error_explanation">
+      <%# バリデーションエラーの件数を表示します。 %>
+      <h2><%= @picture.errors.count %>件のエラーがあります。</h2>
+
+      <ul>
+      <%# @picture.errorsは@pictureをバリデーションした際のエラー情報です。 %>
+      <%# full_messagesは複数のエラーメッセージを表します。 %>
+      <% @picture.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :picture %>
+  <%= f.file_field :picture, class: 'form-control' %>
+  <br>
+  <%= f.label :comment %>
+  <%= f.text_field :comment, class: 'form-control' %>
+  <br>
+  <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+<% end %>
+
+<%= link_to "画像一覧に戻る", pictures_path %>
