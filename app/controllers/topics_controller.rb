@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_topic, only: [:edit, :update, :destroy]
+  before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def index
     @topics = Topic.all
@@ -8,6 +8,14 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
+  end
+
+  def show
+    # 入力フォームと一覧を表示するためインスタンスを2つ生成
+    @comment = @topic.comments.build
+    @comments = @topic.comments
+    # 通知をクリックで既読になる処理
+    Notification.find(params[:notification_id]).update(read: true) if params[:notification_id]
   end
 
   def create
@@ -41,7 +49,7 @@ class TopicsController < ApplicationController
 
   private
     def topics_params
-      params.require(:topic).permit(:topic, :content)
+      params.require(:topic).permit(:topic, :topic_img, :content)
     end
       #idをキーとして取得するメソッド
     def set_topic

@@ -8,9 +8,13 @@
           <div class="topic_table_top">
             <p><%= profile_img(topic.user)%>
             <strong><%= topic.user.name %></strong>
+            <%= link_to topic_path(topic) do %>
+            <h4><strong>トピックタイトル予定地</strong></h4>
+            <%= topic.topic %>
+            <% end %>
             </p>
           </div>
-            <%= image_tag(topic.topic) if topic.topic.present? %>
+            <%= image_tag(topic.topic_img) if topic.topic_img.present? %>
           <div class="topic_table_bottom">
             <p>
               <% if user_signed_in? && current_user.id == topic.user.id %>

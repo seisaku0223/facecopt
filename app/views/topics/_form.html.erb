@@ -16,7 +16,10 @@
   <% end %>
 
   <%= f.label :topic %>
-  <%= f.file_field :topic, class: 'form-control' %>
+  <%= f.text_field :topic, class: 'form-control' %>
+  <br>
+  <%= f.label :topic_img %>
+  <%= f.file_field :topic_img, class: 'form-control' %>
   <br>
   <%= f.label :content %>
   <%= f.text_field :content, class: 'form-control' %>
