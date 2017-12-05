@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 	<meta charset="UTF-8">
-  <title>Day14nonstgram</title>
+  <title>Day20facecopt</title>
   <meta name="viewport" content="width=devise-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -27,7 +27,7 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><%= link_to "画像一覧", pictures_path %></li>
+					<li><%= link_to "画像一覧", topics_path %></li>
 				<% if user_signed_in? %>
 					<li><%= link_to "マイページ", edit_user_registration_path %></li>
 					<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>

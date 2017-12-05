@@ -1,0 +1,26 @@
+<div class="container-fruid">
+    <p><%= notice %></p>
+    <h1>投稿画像一覧</h1>
+    <p><%= link_to "画像を投稿する", new_topic_path, class: 'btn btn-default' %></p>
+    <div class="row">
+      <% @topics.each do |topic| %>
+        <div class="topic_table col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1">
+          <div class="topic_table_top">
+            <p><%= profile_img(topic.user)%>
+            <strong><%= topic.user.name %></strong>
+            </p>
+          </div>
+            <%= image_tag(topic.topic) if topic.topic.present? %>
+          <div class="topic_table_bottom">
+            <p>
+              <% if user_signed_in? && current_user.id == topic.user.id %>
+              <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success' %>
+              <%= link_to "削除", topic_path(topic.id), method: :delete, data: {confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn-danger' %>
+              <% end %>
+            </p>
+          <p><strong>コメント：<%= topic.content %></strong></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>

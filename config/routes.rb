@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'top#index'
 
-  resources :pictures, only:[:index, :new, :create, :edit, :update, :destroy]
+  resources :topics, only:[:index, :new, :create, :edit, :update, :destroy]
 
   devise_for :users, controllers: {
     registrations: "users/registrations",
