@@ -10,6 +10,7 @@
         <% if user.id != current_user.id %>
           <div class="item">
             <p><%= link_to user.name, user %></p>
+            <p><%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%></p>
           </div>
         <%= render 'follow_form', user: user %>
         <% end %>
