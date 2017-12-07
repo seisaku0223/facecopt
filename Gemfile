@@ -67,3 +67,7 @@ gem 'rails_admin'
 gem 'cancan'
 
 gem 'pusher'
+
+gem 'faker'
+gem 'takarabako'
+gem 'yoshida'
