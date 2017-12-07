@@ -5,6 +5,8 @@ class MessagesController < ApplicationController
   end
 
   def index
+    # 会話履歴有りのリスト作成用
+    @conversations = Conversation.all
     #会話にひもづくメッセージを取得する
     @messages = @conversation.messages
 

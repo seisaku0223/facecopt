@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <h2>お知らせ内容一覧</h2>
+    <p>該当リンクをクリックすると、未読は解除されます。</p>
+    <ul>
+      <% @notifications.each do |notification| %>
+      <hr>
+      <li>
+        <p>
+          <%= notification.comment.user.try(:name) %>さんが、<br>
+          あなたのブログ（<%= link_to "#{notification.comment.topic.topic}", topic_path(notification.comment.topic, notification_id: notification.id) %>）にコメントしました。
+        </p>
+        <p>
+          <%= notification.created_at %>
+          <% if notification.read == false %>
+          <span><%= "状態：未読" %></span>
+          <% end %>
+        </p>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

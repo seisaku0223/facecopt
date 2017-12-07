@@ -1,21 +1,22 @@
-<div class="container">
-  <h2><%= @user.name %>さんの詳細情報</h2>
-  <p><%= profile_img(@user) %></p>
-  <p>名前：<%= @user.name %></p>
-  <p>メール：<%= @user.email %></p>
-
-  <h1>フォロー一覧</h1>
-
-  <div class="row user_btm_space">
-    <% @user.followed_users.each do |user| %>
-        <%= render 'followlist_form', user: user %>
-    <% end %>
+<div class="container-fruid">
+  <div class="row ">
+    <div class="panel panel-primary col-md-6 col-md-offset-3 col-xs-6 col-xs-offset-3">
+      <h2><%= @user.name %>さんの詳細情報</h2>
+      <p><%= profile_img(@user) %></p>
+      <p>名前：<%= @user.name %></p>
+      <p>メール：<%= @user.email %></p>
+    </div>
   </div>
-  <hr>
   <div class="row">
-    <h1>フォロワー</h1>
-    <% @user.followers.each do |user| %>
+    <div class="col-md-6 col-md-offset-3 col-xs-6 col-xs-offset-3">
+      <h1>フォローしている人</h1>
+      <% @user.followed_users.each do |user| %>
         <%= render 'followlist_form', user: user %>
-    <% end %>
+      <% end %>
+      <h1>フォロワー</h1>
+      <% @user.followers.each do |user| %>
+        <%= render 'followlist_form', user: user %>
+      <% end %>
+    </div>
   </div>
 </div>

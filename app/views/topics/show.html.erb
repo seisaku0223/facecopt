@@ -4,11 +4,10 @@
     <div class="topic-text">
       <p class="left"><strong>タイトル</strong></p>
       <p class="left"><%= @topic.topic %></p>
-      <p class="left"><strong>画像</strong></p>
       <% if @topic.topic_img == nil %>
       <p class="left">画像無し</p>
       <% else %>
-      <p class="left"><%= image_tag(@topic.topic_img) %></p>
+      <p class="center"><%= image_tag(@topic.topic_img) %></p>
       <% end %>
       <p class="left"><strong>内容</strong></p>
       <p class="left"><%= @topic.content %></p>

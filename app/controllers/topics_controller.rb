@@ -4,6 +4,8 @@ class TopicsController < ApplicationController
 
   def index
     @topics = Topic.all
+    @users = User.all
+    @user = User.find(current_user.id)
   end
 
   def new
@@ -38,7 +40,7 @@ class TopicsController < ApplicationController
     if @topic.update(topics_params)
       redirect_to topics_path, notice: "投稿内容を編集しました！"
     else
-      render 'new'
+      render 'edit'
     end
   end
 

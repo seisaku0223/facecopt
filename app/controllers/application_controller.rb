@@ -6,6 +6,14 @@ class ApplicationController < ActionController::Base
   # before_actionで下で定義したメソッドを実行
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  #ログイン時のみcurrent_notificationsメソッドが起動
+  before_action :current_notifications, if: :signed_in?
+
+  #ヘッダーに、未読の通知件数を表示
+  def current_notifications
+    @notifications_count = Notification.where(user_id: current_user.id).where(read: false).count
+  end
+  
   # 変数PERMISSIBLE_ATTRIBUTESに配列[:name]を代入
   # ユーザー編集ページで画像をアップロードできるようavatar、avatar_cache追加
   PERMISSIBLE_ATTRIBUTES = %i(name avatar avatar_cache)

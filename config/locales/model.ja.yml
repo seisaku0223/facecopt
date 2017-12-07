@@ -1,12 +1,19 @@
 ja:
   activerecord:
     models:
-      picture: "画像"
+      topic: "主題"
       user: "ユーザー"
+      comment: "コメント"
+      message: "対話"
     attributes:
-      picture:
-        picture: "画像"
-        comment: "コメント"
+      topic:
+        topic: "主題"
+        topic_img: "画像"
+        content: "記事"
+      comment:
+        content: "コメント"
+      message:
+        body:  "会話内容"
       user:
         name: "名前"
         email: "メールアドレス"

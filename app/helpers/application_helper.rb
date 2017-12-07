@@ -6,7 +6,7 @@ module ApplicationHelper
     else
       return image_tag(user.avatar, alt: user.name) if user.avatar?
     end
-    
+
     unless user.provider.blank?
       img_url = user.image_url
     else
@@ -14,9 +14,9 @@ module ApplicationHelper
     end
 
     if action_name == 'index'
-      image_tag(img_url, alt: user.name, :class => "miniavatar")
+      image_tag(img_url, alt: user.name, :class => "mini_avatar30")
     else
-      image_tag(img_url, alt: user.name)
+      image_tag(img_url, alt: user.name, :class => "list_avatar100")
     end
   end
 end

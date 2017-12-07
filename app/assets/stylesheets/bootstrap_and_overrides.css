@@ -5,3 +5,42 @@
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
   */
+
+.navbar {
+  min-height: 42px !important;
+  background-color: transparent;
+  color: white;
+  margin-bottom: 0px;
+}
+
+.navbar-brand {
+  height: 42px;
+  padding: 10px 15px;
+}
+
+.navbar-default {
+  height: 42px;
+  color: #FFFFFF;
+  background-color: #4267B2;
+  border: 0;
+  z-index: 1000;
+}
+
+.navbar-nav > li > a {
+  height: 42px;
+}
+
+.navbar-header {
+  height: 42px;
+}
+
+.navbar-collapse {
+  overflow-x: visible;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-top: none;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFFFFF;
+}

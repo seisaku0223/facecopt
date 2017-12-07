@@ -1,16 +1,26 @@
 <div class="container">
-  <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
+
+  <div class="col-md-4 col-xs-4">
+    <div class="list-group-item mess_rireki"><strong>メッセージ</strong></div>
+    <% @conversations.each do |conversation| %>
+        <% if conversation.target_user(current_user).present? %>
+          <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation), class: "list-group-item" %>
+        <% end %>
+    <% end %>
+  </div>
+  <div class="col-md-8 col-xs-8 mess_table">
 <% if @over_ten %>
   <%= link_to '以前のメッセージ', '?m=all' %>
+  <hr>
 <% end %>
 
-<div class="ui segment">
+<div class="ui segment mess_area">
   <% @messages.each do |message| %>
     <% if message.body %>
       <% user = User.find(message.user_id) %>
       <div class="item">
         <div class="content">
-          <div class="header"><strong><%= user.name %></strong> <%= message.message_time %></div>
+          <div class=" header"><strong><%= user.name %></strong> <%= message.message_time %></div>
           <div class="list">
             <div class="item">
               <i class="right triangle icon"></i>
@@ -19,11 +29,14 @@
           </div>
         </div>
       </div>
+      <hr>
     <% end %>
   <% end %>
 </div>
 
-<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+
+
+<%= form_for [@conversation, @message], html: {class: "ui reply form mess_marge"} do |f| %>
   <div class="field">
     <%= f.text_area :body, class: "form-control" %>
   </div>
