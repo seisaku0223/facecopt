@@ -1,22 +1,24 @@
-<div class="container-fruid">
-  <div class="row ">
-    <div class="panel panel-primary col-md-6 col-md-offset-3 col-xs-6 col-xs-offset-3">
+<div class="container">
+  <div class="row row-eq-height">
+    <div class="panel panel-primary col-md-12 col-xs-12">
       <h2><%= @user.name %>さんの詳細情報</h2>
       <p><%= profile_img(@user) %></p>
       <p>名前：<%= @user.name %></p>
       <p>メール：<%= @user.email %></p>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3 col-xs-6 col-xs-offset-3">
+  <div class="row row-eq-height">
+    <div class="col-md-12 col-xs-12">
       <h1>フォローしている人</h1>
-      <% @user.followed_users.each do |user| %>
-        <%= render 'followlist_form', user: user %>
-      <% end %>
-      <h1>フォロワー</h1>
-      <% @user.followers.each do |user| %>
-        <%= render 'followlist_form', user: user %>
-      <% end %>
     </div>
+    <% @user.followed_users.each do |user| %>
+      <%= render 'followlist_form', user: user %>
+    <% end %>
+    <div class="col-md-12 col-xs-12">
+      <h1>フォロワー</h1>
+    </div>
+    <% @user.followers.each do |user| %>
+      <%= render 'followlist_form', user: user %>
+    <% end %>
   </div>
 </div>

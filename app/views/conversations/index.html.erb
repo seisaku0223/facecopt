@@ -1,12 +1,20 @@
-<div class="container">
-<div class="wrapper col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
-  <h2>メッセージ履歴</h2>
+<div class="container-fruid">
+  <div class="row row_pos">
+    <div class="col-md-4 col-xs-4">
+      <div class="list-group-item mess_rireki">
+        <strong>メッセージ機能</strong>
+      </div>
       <% @conversations.each do |conversation| %>
-    <div class="list-group-item">
+        <div class="list-group-item">
           <% if conversation.target_user(current_user).present? %>
             <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation)%>
           <% end %>
         </div>
       <% end %>
     </div>
+    <div class="col-md-8 col-xs-8 mess_table">
+      <p>メッセージ履歴の閲覧、対話が行えます。</p>
+      <p>過去に利用履歴がある方の名前が並んでいます。</p>
+    </div>
+  </div>
 </div>

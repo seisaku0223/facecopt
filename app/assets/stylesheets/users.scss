@@ -18,3 +18,9 @@
   min-height: 155px;
   max-height: 155px;
 }
+
+.row-eq-height {
+    display: flex;
+    flex-wrap: wrap;
+    word-break:break-all
+}

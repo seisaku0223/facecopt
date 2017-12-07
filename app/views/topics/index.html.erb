@@ -1,7 +1,6 @@
 <div class="container-fruid">
   <p><%= notice %></p>
-  <h1>投稿記事一覧</h1>
-  <p><%= link_to "新規投稿する", new_topic_path, class: 'btn btn-default' %></p>
+
   <div class="row">
     <div class="col-md-3 col-xs-3 list-group">
       <%= link_to users_path, class: "list-group-item" do %>
@@ -13,6 +12,7 @@
       <p></p>
     </div>
       <div class="col-md-6 col-xs-6">
+        <div class="topic_table_top"><%= link_to "新規投稿はこちら", new_topic_path, class: 'btn btn-default' %></div>
         <% @topics.each do |topic| %>
           <div class="topic_table_top left">
             <p>
@@ -34,6 +34,7 @@
             <strong>記事：<%= topic.content %></strong>
           </div>
           <div class="topic_table_btm topic_table_end right">
+            <%= link_to "コメントする", topic_path(topic), class: 'btn btn-default btn-sm btn-success' %>
             <% if user_signed_in? && current_user.id == topic.user.id %>
               <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success' %>
               <%= link_to "削除", topic_path(topic.id), method: :delete, data: {confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn-danger' %>

@@ -1,13 +1,15 @@
-<div class="container">
-
-  <div class="col-md-4 col-xs-4">
-    <div class="list-group-item mess_rireki"><strong>メッセージ</strong></div>
-    <% @conversations.each do |conversation| %>
+<div class="container-fruid">
+  <div class="row row_pos">
+    <div class="col-md-4 col-xs-4">
+      <div class="list-group-item mess_rireki">
+        <strong>メッセージ機能</strong>
+      </div>
+      <% @conversations.each do |conversation| %>
         <% if conversation.target_user(current_user).present? %>
           <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation), class: "list-group-item" %>
         <% end %>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
   <div class="col-md-8 col-xs-8 mess_table">
 <% if @over_ten %>
   <%= link_to '以前のメッセージ', '?m=all' %>
@@ -45,5 +47,6 @@
     <%= f.submit "メッセージを送る" %>
   </div>
 <% end %>
+</div>
 </div>
 </div>

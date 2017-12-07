@@ -5,10 +5,15 @@
     <p>編集対象のブログ情報</p>
 
     <p class="left">タイトル：<%= @comment.topic.topic %></p>
+    <p class="left">画像：</p>
+    <% if @comment.topic.topic_img == nil %>
+    <p class="left">無し</p>
+    <% else %>
+    <p class="left"><%= image_tag(@comment.topic.topic_img) %></p>
+    <% end %>
     <p class="left">本文：<%= @comment.topic.content %></p>
 
     <%= form_for(@comment, url: topic_comment_path, method: 'put') do |f| %>
-    <%= f.error_messages! %>
     <%= f.label :content %>
     <%= f.text_field :content, class: 'form-control' %>
     <%= f.submit '編集する', class: 'btn btn-primary btn-block' %>
