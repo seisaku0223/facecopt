@@ -71,3 +71,5 @@ gem 'pusher'
 gem 'faker'
 gem 'takarabako'
 gem 'yoshida'
+
+gem 'fog'
