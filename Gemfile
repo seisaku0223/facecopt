@@ -43,12 +43,19 @@ group :development, :test do
   gem 'spring'
   gem 'pry-rails'
   gem 'better_errors'
+
+  gem 'capistrano', '3.6.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
   gem 'letter_opener_web'
-  gem 'dotenv-rails'
 end
+
+gem 'therubyracer', platforms: :ruby
 
 gem 'twitter-bootstrap-rails'
 
@@ -73,3 +80,5 @@ gem 'takarabako'
 gem 'yoshida'
 
 gem 'fog'
+gem 'dotenv-rails'
+gem 'unicorn'
