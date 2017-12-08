@@ -55,13 +55,13 @@ class CommentsController < ApplicationController
   end
 
   private
-    # ストロングパラメーター
-    def comment_params
-      params.require(:comment).permit(:topic_id, :content)
-    end
+  # ストロングパラメーター
+  def comment_params
+    params.require(:comment).permit(:topic_id, :content)
+  end
 
-    #idをキーとして取得するメソッド
-    def set_comment_id
-      @comment = Comment.find(params[:id])
-    end
+  #idをキーとして取得するメソッド
+  def set_comment_id
+    @comment = Comment.find(params[:id])
+  end
 end

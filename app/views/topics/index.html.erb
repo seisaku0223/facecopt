@@ -11,8 +11,8 @@
       <%= link_to "メッセージ機能",conversations_path, class: "list-group-item" %>
       <p></p>
     </div>
-      <div class="col-md-6 col-xs-6">
-        <div class="topic_table_top"><%= link_to "新規投稿はこちら", new_topic_path, class: 'btn btn-default' %></div>
+    <div class="col-md-6 col-xs-6">
+      <div class="topic_table_top"><%= link_to "新規投稿はこちら", new_topic_path, class: 'btn btn-default' %></div>
         <% @topics.each do |topic| %>
           <div class="topic_table_top left">
             <p>
@@ -20,45 +20,42 @@
               <strong><%= topic.user.name %></strong>
             </p>
             <p>
-            <%= link_to topic_path(topic) do %>
+              <%= link_to topic_path(topic) do %>
               <strong><%= topic.topic %></strong>
-            <% end %>
+              <% end %>
             </p>
           </div>
-            <% unless topic.topic_img == nil %>
-              <div class="topic_table_img center">
-            <%= image_tag(topic.topic_img) if topic.topic_img.present? %>
-              </div>
-            <% end%>
-          <div class="topic_table_btm left">
-            <strong>記事：<%= topic.content %></strong>
-          </div>
-          <div class="topic_table_btm topic_table_end right">
-            <%= link_to "コメントする", topic_path(topic), class: 'btn btn-default btn-sm btn-success' %>
-            <% if user_signed_in? && current_user.id == topic.user.id %>
-              <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success' %>
-              <%= link_to "削除", topic_path(topic.id), method: :delete, data: {confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn-danger' %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-      <div class="col-md-3 col-xs-3 list-group">
-        <div class="list-group-item">知り合いかも</div>
-        <% @users.each do |user| %>
+          <% unless topic.topic_img == nil %>
+            <div class="topic_table_img center">
+              <%= image_tag(topic.topic_img) if topic.topic_img.present? %>
+            </div>
+          <% end %>
+        <div class="topic_table_btm left">
+          <strong>記事：<%= topic.content %></strong>
+        </div>
+        <div class="topic_table_btm topic_table_end right">
+          <%= link_to "コメントする", topic_path(topic), class: 'btn btn-default btn-sm btn-success' %>
+          <% if user_signed_in? && current_user.id == topic.user.id %>
+            <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success' %>
+            <%= link_to "削除", topic_path(topic.id), method: :delete, data: {confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn-danger' %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-3 col-xs-3 list-group">
+    <div class="list-group-item">知り合いかも</div>
+      <% @users.each do |user| %>
         <% if user.id != current_user.id %>
           <% unless current_user.following?(user) %>
-            <%= form_for(current_user.relationships.build(followed_id: user.id), remote: true) do |f| %>
-            <div class="list-group-item">
-              <%= profile_img(user) %>
-            <%= link_to user.name, user %>
-              <%= f.hidden_field :followed_id %>
-              <%= f.submit "フォロー", class: "btn btn-large btn-primary" %>
+              <div class="list-group-item">
+                <%= profile_img(user) %>
+                <%= link_to user.name, user %>
+                <%= render 'users/follow_form', user: user %>
               </div>
-            <% end %>
+          <% end %>
         <% end %>
       <% end %>
-        <% end %>
-      </div>
     </div>
   </div>
 </div>
