@@ -1,6 +1,6 @@
 Rails.application.configure do
 
-  config.action_mailer.default_url_options = { host: 'https://still-harbor-80500.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: 'http://13.112.134.244/' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings =
   {
